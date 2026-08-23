@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 128" fill="none" role="img" aria-label="Codematically">
+  <defs>
+    <linearGradient id="cmGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#38bdf8"/>
+      <stop offset="0.5" stop-color="#6366f1"/>
+      <stop offset="1" stop-color="#a78bfa"/>
+    </linearGradient>
+  </defs>
+  <rect x="8" y="16" width="96" height="96" rx="26" fill="#0a0d1a" stroke="#1e2439" stroke-width="2"/>
+  <path d="M62 44 L44 64 L62 84" stroke="url(#cmGrad)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="76" cy="64" r="6" fill="url(#cmGrad)"/>
+  <text x="126" y="80" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="48" font-weight="700" letter-spacing="-1.5" fill="#f5f6fa">Codematically</text>
+</svg>

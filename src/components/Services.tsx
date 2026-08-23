@@ -1,4 +1,7 @@
+import type { MouseEvent } from 'react';
+import { motion } from 'framer-motion';
 import { Code2, Workflow, Rocket, LineChart, Bot, Plug } from 'lucide-react';
+import Reveal from './Reveal';
 
 const services = [
   {
@@ -17,10 +20,10 @@ const services = [
   },
   {
     icon: Bot,
-    title: 'AI Integrations',
+    title: 'AI & RAG Systems',
     description:
-      'Practical AI features baked into your product or ops — chat assistants, content pipelines, and smart data processing.',
-    points: ['AI chat & support agents', 'Document & data pipelines', 'LLM-powered features'],
+      'Retrieval-augmented assistants, agents and vision models that answer from your own data instead of guessing.',
+    points: ['LangChain & LangGraph', 'Vector search & RAG', 'Custom AI agents'],
   },
   {
     icon: Plug,
@@ -45,35 +48,46 @@ const services = [
   },
 ];
 
+/** Tracks the cursor so each card can light up under the pointer. */
+function trackSpotlight(e: MouseEvent<HTMLDivElement>) {
+  const rect = e.currentTarget.getBoundingClientRect();
+  e.currentTarget.style.setProperty('--mx', `${e.clientX - rect.left}px`);
+  e.currentTarget.style.setProperty('--my', `${e.clientY - rect.top}px`);
+}
+
 export default function Services() {
   return (
     <section id="services" className="px-6 py-28 border-t border-border">
       <div className="mx-auto max-w-6xl">
-        <div className="max-w-2xl">
-          <span className="text-xs font-medium uppercase tracking-wider text-accent">
-            Services
-          </span>
+        <Reveal className="max-w-2xl">
+          <span className="text-xs font-medium uppercase tracking-wider text-accent">Services</span>
           <h2 className="mt-3 text-3xl sm:text-4xl font-semibold text-text-h tracking-tight">
             Everything you need to launch and scale online
           </h2>
           <p className="mt-4 text-text-dim">
-            Two core disciplines, working together: sharp web development and smart
+            Three disciplines, working together: sharp web development, applied AI, and smart
             automation — so your site looks great and your operations run without you.
           </p>
-        </div>
+        </Reveal>
 
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map(({ icon: Icon, title, description, points }) => (
-            <div
+          {services.map(({ icon: Icon, title, description, points }, i) => (
+            <motion.div
               key={title}
-              className="group rounded-2xl border border-border bg-surface p-6 hover:border-text-dim/40 transition-colors"
+              onMouseMove={trackSpotlight}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: (i % 3) * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ y: -5 }}
+              className="spotlight group relative overflow-hidden rounded-2xl border border-border bg-surface p-6 hover:border-accent/40 transition-colors"
             >
-              <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-bg-soft border border-border text-accent">
+              <div className="relative inline-flex h-10 w-10 items-center justify-center rounded-lg bg-bg-soft border border-border text-accent transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6">
                 <Icon size={18} />
               </div>
-              <h3 className="mt-5 text-lg font-medium text-text-h">{title}</h3>
-              <p className="mt-2 text-sm text-text-dim leading-relaxed">{description}</p>
-              <ul className="mt-4 space-y-1.5">
+              <h3 className="relative mt-5 text-lg font-medium text-text-h">{title}</h3>
+              <p className="relative mt-2 text-sm text-text-dim leading-relaxed">{description}</p>
+              <ul className="relative mt-4 space-y-1.5">
                 {points.map((p) => (
                   <li key={p} className="flex items-center gap-2 text-xs text-text-dim">
                     <span className="h-1 w-1 rounded-full bg-accent" />
@@ -81,7 +95,7 @@ export default function Services() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Plus } from 'lucide-react';
+import Reveal from './Reveal';
 
 const faqs = [
   {
@@ -30,41 +32,52 @@ export default function Faq() {
   return (
     <section id="faq" className="px-6 py-28 border-t border-border">
       <div className="mx-auto max-w-3xl">
-        <div className="text-center">
+        <Reveal className="text-center">
           <span className="text-xs font-medium uppercase tracking-wider text-accent">FAQ</span>
           <h2 className="mt-3 text-3xl sm:text-4xl font-semibold text-text-h tracking-tight">
             Frequently asked questions
           </h2>
-        </div>
+        </Reveal>
 
         <div className="mt-12 divide-y divide-border border-y border-border">
           {faqs.map((f, i) => {
             const isOpen = openIndex === i;
             return (
-              <div key={f.q}>
+              <motion.div
+                key={f.q}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.6 }}
+                transition={{ duration: 0.4, delay: i * 0.06 }}
+              >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : i)}
-                  className="w-full flex items-center justify-between gap-4 py-5 text-left"
+                  className="w-full flex items-center justify-between gap-4 py-5 text-left group"
                 >
-                  <span className="text-sm sm:text-base font-medium text-text-h">{f.q}</span>
+                  <span className="text-sm sm:text-base font-medium text-text-h group-hover:text-accent transition-colors">
+                    {f.q}
+                  </span>
                   <Plus
                     size={18}
-                    className={`shrink-0 text-text-dim transition-transform duration-200 ${
-                      isOpen ? 'rotate-45' : ''
+                    className={`shrink-0 text-text-dim transition-transform duration-300 ${
+                      isOpen ? 'rotate-135 text-accent' : ''
                     }`}
                   />
                 </button>
-                <div
-                  className={`grid transition-all duration-200 ease-in-out ${
-                    isOpen ? 'grid-rows-[1fr] pb-5' : 'grid-rows-[0fr]'
-                  }`}
-                  style={{ display: 'grid' }}
-                >
-                  <div className="overflow-hidden">
-                    <p className="text-sm text-text-dim leading-relaxed pr-8">{f.a}</p>
-                  </div>
-                </div>
-              </div>
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                      className="overflow-hidden"
+                    >
+                      <p className="pb-5 text-sm text-text-dim leading-relaxed pr-8">{f.a}</p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
             );
           })}
         </div>

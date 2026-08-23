@@ -1,11 +1,13 @@
+import Logo from './Logo';
+
 const links = {
   Studio: [
     { label: 'Services', href: '#services' },
+    { label: 'Solutions', href: '#solutions' },
     { label: 'Process', href: '#process' },
-    { label: 'Work', href: '#work' },
   ],
   Contact: [
-    { label: 'hello@codematicly.com', href: 'mailto:hello@codematicly.com' },
+    { label: 'hello@codematically.com', href: 'mailto:hello@codematically.com' },
     { label: 'Start a project', href: '#contact' },
   ],
 };
@@ -15,15 +17,12 @@ export default function Footer() {
     <footer className="border-t border-border">
       <div className="mx-auto max-w-6xl px-6 py-14 grid gap-10 sm:grid-cols-[1.5fr_1fr_1fr]">
         <div>
-          <a href="#top" className="flex items-center gap-2 font-semibold text-text-h tracking-tight">
-            <span className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-gradient-to-br from-accent via-accent-2 to-violet text-bg font-bold text-sm">
-              c
-            </span>
-            codematicly
+          <a href="#top" aria-label="Codematically home">
+            <Logo size={28} />
           </a>
           <p className="mt-4 text-sm text-text-dim max-w-xs">
-            Web development and automation services for businesses that want to move faster
-            online.
+            Web development, applied AI and automation services for businesses that want to
+            move faster online.
           </p>
         </div>
 
@@ -45,7 +44,7 @@ export default function Footer() {
 
       <div className="border-t border-border">
         <div className="mx-auto max-w-6xl px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-text-dim">
-          <span>&copy; {new Date().getFullYear()} codematicly. All rights reserved.</span>
+          <span>&copy; {new Date().getFullYear()} Codematically. All rights reserved.</span>
           <span>Built with React &amp; Tailwind — deployed on Vercel.</span>
         </div>
       </div>
