@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Mail, CheckCircle2 } from 'lucide-react';
+import { ArrowUpRight, Mail, Phone, CheckCircle2 } from 'lucide-react';
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
@@ -38,11 +38,31 @@ export default function Contact() {
             reply within one business day.
           </p>
 
-          <div className="mt-8 flex items-center gap-2 text-sm text-text-dim">
-            <Mail size={16} className="text-accent" />
-            <a href="mailto:hello@codematically.com" className="hover:text-text-h transition-colors">
-              hello@codematically.com
-            </a>
+          <div className="mt-8 space-y-3 text-sm text-text-dim">
+            <div className="flex items-center gap-2">
+              <Mail size={16} className="shrink-0 text-accent" />
+              <a
+                href="mailto:codematically@gmail.com"
+                className="hover:text-text-h transition-colors"
+              >
+                codematically@gmail.com
+              </a>
+            </div>
+            <div className="flex items-center gap-2">
+              <Mail size={16} className="shrink-0 text-accent" />
+              <a
+                href="mailto:umerqureshi40116@gmail.com"
+                className="hover:text-text-h transition-colors"
+              >
+                umerqureshi40116@gmail.com
+              </a>
+            </div>
+            <div className="flex items-center gap-2">
+              <Phone size={16} className="shrink-0 text-accent" />
+              <a href="tel:+923455040529" className="hover:text-text-h transition-colors">
+                +92 345 5040529
+              </a>
+            </div>
           </div>
         </div>
 

@@ -4,10 +4,13 @@ const links = {
   Studio: [
     { label: 'Services', href: '#services' },
     { label: 'Solutions', href: '#solutions' },
+    { label: 'Portfolio', href: '#portfolio' },
     { label: 'Process', href: '#process' },
   ],
   Contact: [
-    { label: 'hello@codematically.com', href: 'mailto:hello@codematically.com' },
+    { label: 'codematically@gmail.com', href: 'mailto:codematically@gmail.com' },
+    { label: 'umerqureshi40116@gmail.com', href: 'mailto:umerqureshi40116@gmail.com' },
+    { label: '+92 345 5040529', href: 'tel:+923455040529' },
     { label: 'Start a project', href: '#contact' },
   ],
 };
