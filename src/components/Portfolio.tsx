@@ -97,6 +97,7 @@ const projects: Project[] = [
     tag: 'NLP · Compliance',
     title: 'ComplianceGuard',
     desc: 'Call-centre compliance detector: TF-IDF + LinearSVC flags whether agents completed data-capture verification. 99.97% on 5-fold CV vs 81.3% keyword baseline.',
+    demo: 'https://drive.google.com/file/d/1oil1LGhQBNGLCdxIA9NjxiA-PdM6tLaR/preview',
     code: 'https://github.com/umerqureshi40116/call_center_supervision',
     thumbnail:
       'https://res.cloudinary.com/dh2tiiokr/image/upload/v1788712595/Compliance_Guard_Thumbnail_xawxpu.png',
@@ -105,6 +106,7 @@ const projects: Project[] = [
     tag: 'ML · Analytics',
     title: 'Student Class Estimator',
     desc: 'Teachers upload a class CSV and get grade-distribution and difficulty-tolerance charts. Aggregate class predictions land 88-95% accurate.',
+    demo: 'https://drive.google.com/file/d/1YjrUK0bEge-1vks2XXU4U1NcXEu-KhB_/preview',
     code: 'https://github.com/umerqureshi40116/student_class_estimator',
     thumbnail:
       'https://res.cloudinary.com/dh2tiiokr/image/upload/v1788712749/Student_Performance_Project_Thumbnail_zp2qzo.png',
